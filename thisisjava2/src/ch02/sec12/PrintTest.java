@@ -9,7 +9,7 @@ public class PrintTest {
 		System.out.println(age);
 		System.out.println("나의 이름은 "+name+", 나이는 "+age);
 		
-		System.out.printf("내 이름은 %s이고, ", name);     //%s: 문자형, %d: 정수형
+		System.out.printf("내 이름은 %s이고, ", name);     //%s: 문자형, %d(decimal=십진법): 정수형
 		System.out.printf("나이는 %d세 입니다.", age);      //out: 출력 스트림, in: 입력 스트림
 		
 		System.out.printf("\n나의 이름은 %s이고, 나이는 %d 입니다.", name, age);    //printf는 줄바꿈 안됨

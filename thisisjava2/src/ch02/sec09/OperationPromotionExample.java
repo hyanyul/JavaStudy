@@ -13,7 +13,7 @@ public class OperationPromotionExample {
 		byte v3 = 10;
 		int v4 = 100;
 		long v5 = 1000L;
-		long result3 = v3 + v4 + v5;
+		long result3 = v3 + v4 + v5;                   //타입 섞여서 연산 시 작은 타입이 큰 타입으로 자동변환되어 계산됨
 		System.out.println("result3: " + result3);
 		
 		char v6 = 'A';
@@ -22,7 +22,7 @@ public class OperationPromotionExample {
 		System.out.println("result4: "+result4);
 		System.out.println("result4: "+(char)result4);
 		int v8 = 10;
-		int result5= v8/4;
+		int result5= v8 / 4;
 		System.out.println("result5: "+result5);
 		
 		int v9 = 10;
@@ -30,7 +30,7 @@ public class OperationPromotionExample {
 		System.out.println("result6:" + result6);
 		int v10 = 1;
 		int v11 = 2;
-		double result7 = (double) v10/v11;
+		double result7 = (double) v10/v11;         //연산 시 컴파일러에 의한 자동 변환 안됨=강제 변환 필요
 		System.out.println("result7: "+result7);
 	}
 

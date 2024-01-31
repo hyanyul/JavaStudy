@@ -2,11 +2,12 @@ package ch02.sec09;
 
 public class OperationPromotionExample {
 	public static void main(String[] args) {
-		byte result1 = 10 + 20;
+		byte result1 = 10 + 20;       //int보다 작은 타입의 리터럴 연산은 별도의 형변환 발생하지 않음=30은 byte가 담을 수 있는 값이므로 상관 없음
 		System.out.println("result1:" + result1);
+		//System.out.println(result1.getClass().getName());  //클래스 타입만 알 수 있음 기본타입은 불가
 		
 		byte v1 = 10;
-		byte v2 = 20;
+		byte v2 = 20;		
 		int result2 = v1 + v2;
 		System.out.println("result2: " + result2);     
 		

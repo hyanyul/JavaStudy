@@ -1,6 +1,6 @@
 package pck.test.ck;
 
-class Car{
+class Car{                 //우리가 만든 자료형
 	String modelName;        //멤버 변수(필드, 속성)
 	String carColor;
 	int carYear;

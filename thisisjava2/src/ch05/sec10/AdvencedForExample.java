@@ -6,7 +6,7 @@ public class AdvencedForExample {         //외부에서 접근이 가능하도�
 		
 		int sum = 0;
 		
-		/*for(int score : scores) {
+		/*for(int score : scores) {        //향상된 for문   for(타입 변수:배열){}
 			sum += score;
 		}*/
 		

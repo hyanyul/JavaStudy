@@ -2,7 +2,7 @@ package com.nema.buy;
 
 public class ProductClass {
 	int id;              //상품 번호
-	String name;         //상품명
+	static String name;         //상품명
 	int price;           //상품 가격
 	int quantity;        //수량
 	

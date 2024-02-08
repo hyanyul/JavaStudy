@@ -1,13 +1,15 @@
 package com.nema.buy;
 
+import java.util.Scanner;
+
 public class ExeClass {
 	
 	public static void main(String[] args) {
 		
 		//1. 회원등록	
-		CustomerClass c1 = new CustomerClass(001, "이", 24);
-		CustomerClass c2 = new CustomerClass(002, "오", 52);
-		CustomerClass c3 = new CustomerClass(003, "한성지", 24);
+		CustomerClass c1 = new CustomerClass(001, "이", 24, new ProductClass[10]);
+		CustomerClass c2 = new CustomerClass(002, "오", 52, new ProductClass[10]);
+		CustomerClass c3 = new CustomerClass(003, "한성지", 24, new ProductClass[10]);
 		
 		c1.customerInfo();
 		c2.customerInfo();
@@ -29,13 +31,25 @@ public class ExeClass {
 		p4.productInfo();
 		p5.productInfo();
 		
+		Scanner sc = new Scanner(System.in);
 		
 		//3. 상품 구매 - 장바구니에 담기
-		c3.addToCart(물건, 수량);
+		//c3.addToCart(물건, 수량);
+		System.out.print("\n구매할 물품을 입력해주세요: ");
+		String choise = sc.nextLine();
 		
+		System.out.print("\n구매 수량을 입력해주세요: ");
+		int quan = sc.nextInt();
 		
-		//4. 상품 구매 - 결제
-		c3.purchase();  //회원 oo 이 ㅁㅁ을 n개 구매했습니다.
+		int i = 0;
+		boolean run = true;
+		while(run) {
+			addToCart(choise, quan);
+			i++;
+		}
+		
+		//4. 상품 구매 - 결제, 상품 수량 넘으면 구입 불가+현재 구입할 수 있는 수량 메시지 띄워야 함
+		//c3.purchase();  //회원 oo 이 ㅁㅁ을 n개 구매했습니다.
 	}
 
 }

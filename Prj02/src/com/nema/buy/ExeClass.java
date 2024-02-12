@@ -35,21 +35,22 @@ public class ExeClass {
 		
 		//3. 상품 구매 - 장바구니에 담기
 		//c3.addToCart(물건, 수량);
-		System.out.print("\n구매할 물품을 입력해주세요: ");
-		String choise = sc.nextLine();
+		//System.out.print("\n구매할 물품을 입력해주세요: ");
+		ProductClass choise;
 		
-		System.out.print("\n구매 수량을 입력해주세요: ");
-		int quan = sc.nextInt();
+		//System.out.print("\n구매 수량을 입력해주세요: ");
+		int quan;
 		
-		int i = 0;
-		boolean run = true;
-		while(run) {
-			addToCart(choise, quan);
-			i++;
-		}
+		
+		c3.addToCart(p1, 16);
+		c3.addToCart(p1, 83);
+		c3.addToCart(p4, 11);
+			
 		
 		//4. 상품 구매 - 결제, 상품 수량 넘으면 구입 불가+현재 구입할 수 있는 수량 메시지 띄워야 함
 		//c3.purchase();  //회원 oo 이 ㅁㅁ을 n개 구매했습니다.
+		c3.purchase();
+		
 	}
 
 }

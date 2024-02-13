@@ -5,7 +5,7 @@ public class MyClass {
 	int a = 10;
 	int b = 20;
 	double x = 1.2;
-	double y = 2.4;
+	double y = 2.  4;
 	
 	plus(a, b);
 	plus(x, y);

@@ -1,4 +1,4 @@
-package com.nema.buy;
+package com.nema.buy_1;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ public class ExeClass {
 	
 	public static void main(String[] args) {
 		
-		//1. 회원등록	
+		//1. 회원등록	+ 장바구니 생성
 		CustomerClass c1 = new CustomerClass(001, "이", 24, new ProductClass[10]);
 		CustomerClass c2 = new CustomerClass(002, "오", 52, new ProductClass[10]);
 		CustomerClass c3 = new CustomerClass(003, "한성지", 24, new ProductClass[10]);
@@ -45,12 +45,12 @@ public class ExeClass {
 		c3.addToCart(p1, 16);
 		c3.addToCart(p1, 83);
 		c3.addToCart(p4, 11);
+		c3.addToCart(p1, 16);
 			
 		
 		//4. 상품 구매 - 결제, 상품 수량 넘으면 구입 불가+현재 구입할 수 있는 수량 메시지 띄워야 함
 		//c3.purchase();  //회원 oo 이 ㅁㅁ을 n개 구매했습니다.
 		c3.purchase();
-		
 	}
 
 }

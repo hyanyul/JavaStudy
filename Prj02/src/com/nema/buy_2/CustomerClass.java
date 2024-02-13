@@ -1,4 +1,4 @@
-package com.nema.buy;
+package com.nema.buy_2;
 
 public class CustomerClass {
 	int id;                  //회원 번호
@@ -6,6 +6,7 @@ public class CustomerClass {
 	int age;                 //회원 나이
 	
 	ProductClass[] cart;     //장바구니(물품 저장), 10개짜리 product 배열
+	int[] total = new int[10]; 
 	
 	void customerInfo() {
 		System.out.printf("'회원 번호: %d, 회원 이름: %s, 회원 나이: %d세'인 회원 생성\n", id, name, age);
@@ -18,18 +19,17 @@ public class CustomerClass {
 		this.cart = cart;
 	}
 	
-	int i = 0;
+	int purchaseIdx = 0;
 	public void addToCart(ProductClass choice, int quantity) {	
-		if(quantity<=choice.quantity) {
+		boolean Ok = choice.checkQty(quantity);
+		if(!Ok) {          //구입 불가
+			System.out.printf("\n수량이 부족합니다. 구입 가능 수량은 %d개 입니다.\n", choice.quantity);
+		}else {          //구입 가능
+			cart[purchaseIdx] = choice; 
+			total[purchaseIdx] = quantity;
+			purchaseIdx++;
 			choice.quantity -= quantity;
-			cart[i] = new ProductClass(choice.id, choice.name, choice.price, quantity);
-			i++;
-			
-			System.out.printf("\n장바구니에 %s을(를) %d개 담았습니다.\n", choice.name, quantity);
-			
-		}else {
-			System.out.printf("\n구매 수량이 재고를 초과하여 장바구니에 담을 수 없습니다. 현재 재고는 %d개입니다.\n", choice.quantity);
-			
+			System.out.printf("\n나이가 %d인 %s이(가) 장바구니에 %d원짜리 %s을(를) %d개 담았습니다.\n", this.age, this.name, choice.price, choice.name, quantity);
 		}
 	}
 	
@@ -37,8 +37,8 @@ public class CustomerClass {
 		int sum = 0;
 		for(int i = 0;i<cart.length; i++) {
 			if(cart[i]!=null) {
-				System.out.printf("\n회원 %s이(가) %s을(를) %d개 구매하였습니다.\n", name, cart[i].name, cart[i].quantity);
-				sum += cart[i].price*cart[i].quantity;
+				System.out.printf("\n회원 %s이(가) %s을(를) %d개 구매하였습니다.\n", name, cart[i].name, total[i]);
+				sum += cart[i].price*total[i];
 			}
 		}
 		

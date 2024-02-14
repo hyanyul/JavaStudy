@@ -13,7 +13,7 @@ public class MyClass {
 	plus(a, x);    //자동 형변환
 	}
 	
-	public static void plus(int a, int b) 
+	public static void plus(int a, int b) { 
 		int res = a + b;
 		System.out.printf("res: %d\n", res);	
 	}

@@ -9,6 +9,10 @@ public class BookClass {
 	private int price;
 	private float tax = 1.1f;
 	
+	BookClass(){
+		
+	}
+	
 	BookClass(String title, String author, String publisher, int price){    //1. 도서 등록-생성자 이용
 		this.title = title;
 		this.author = author;
@@ -19,8 +23,8 @@ public class BookClass {
 		System.out.printf("'책 제목: %s, 저자명: %s, 출판사: %s, 가격: %d원' 등록\n", title, author, publisher, price);
 	}
 	
-	public void bookSearch() {   //2. 도서 검색
-				
+	public void bookSearch() {   //2. 도서 검색-이름이나 작가로 검색
+		
 	}
 	
 	public void bookCheck(List<BookClass> bookList) {       //4. 도서 확인-도서 전체 출력

@@ -19,7 +19,9 @@ public class BookClass {
 		System.out.printf("'책 제목: %s, 저자명: %s, 출판사: %s, 가격: %d원' 등록\n", title, author, publisher, price);
 	}
 	
-	
+	public void bookSearch() {   //2. 도서 검색
+				
+	}
 	
 	public void bookCheck(List<BookClass> bookList) {       //4. 도서 확인-도서 전체 출력
 		for(int i=0; i<bookList.size(); i++) {

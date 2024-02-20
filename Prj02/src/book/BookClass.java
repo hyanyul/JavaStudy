@@ -13,7 +13,7 @@ public class BookClass {
 	BookClass(){
 		
 	}
-	
+
 	
 	BookClass(String title, String author, String publisher, int price){    //1. 도서 등록-생성자 이용
 		this.title = title;
@@ -66,16 +66,17 @@ public class BookClass {
 	public float getTax() {
 		return tax;
 	}
-
-
-	public void bookInfo() {     //도서 등록 후 확인 문구 출력
-		System.out.printf("'책 제목: %s, 저자명: %s, 출판사: %s, 가격: %d원' 등록\n", title, author, publisher, price);
-	}
 	
 	
 	public void bookPurchase(List<BookClass> bookList, String purchase) {
 		for(int i=0; i<bookList.size(); i++) {
-			System.out.printf("책 이름: %s, 저자명: %s, 출판사:%s, 가격: %d원", bookList.get(i).title, bookList.get(i).author, bookList.get(i).publisher, bookList.get(i).price);
+			System.out.printf("책 이름: %s, 저자명: %s, 출판사:%s, 가격: %d원, ", bookList.get(i).title, bookList.get(i).author, bookList.get(i).publisher, bookList.get(i).price);
 		}
+	}
+	
+	public void bookInfo(List<BookClass> bookList) {     //1. 도서 등록 후 확인 문구 출력
+		int i = bookList.size();
+		System.out.printf("'책 제목: %s, 저자명: %s, 출판사: %s, 가격: %d, ", bookList.get(i-1).getTitle(), bookList.get(i-1).getAuthor(), bookList.get(i-1).getPublisher(), (int)(bookList.get(i-1).getPrice()*tax));
+	
 	}
 }

@@ -4,10 +4,13 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class BookMain {
+	
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
+		
 		List<BookClass> bookList = new ArrayList<>();
+
 		BookMain bM = new BookMain();
 		
 		System.out.println("도서 관리 프로그램을 시작합니다.\n");
@@ -15,7 +18,6 @@ public class BookMain {
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -38,20 +40,34 @@ public class BookMain {
 			sc.nextLine();
 			
 			if(select == 1) {         //도서 등록
-				System.out.print("\n책 제목을 입력해주세요: ");
+				System.out.print("\n책 제목을 입력하세요: ");
 				String title = sc.nextLine();
-				System.out.print("저자명을 입력해주세요: ");
+				System.out.print("저자명을 입력하세요: ");
 				String author = sc.nextLine();
-				System.out.print("출판사를 입력해주세요: ");
+				System.out.print("출판사를 입력하세요: ");
 				String publisher = sc.nextLine();
-				System.out.print("가격을 입력해주세요: ");
+				System.out.print("가격을 입력하세요: ");
 				int price = sc.nextInt();
 				sc.nextLine();
+				System.out.print("전자책일 때 호환 기기를 입력해주세요: ");
+				String supperDevices = sc.nextLine();
+				System.out.print("종이책일 때 책 페이지 수를 입력하세요: ");
+				int size = sc.nextInt();
+				sc.nextLine();
 				
-			
+				
 				BookClass bC = new BookClass(title, author, publisher, price);
+				EBookClass bC_E = new EBookClass(title, author, publisher, price, supperDevices);
+				PaperBookClass bC_P = new PaperBookClass(title, author, publisher, price, size);
 				bookList.add(bC);
-				bC.bookInfo();
+				bookList.add(bC_E);
+				bookList.add(bC_P);
+				bC_E.deviceInfo(bookList);
+				System.out.println("' 등록");
+				bC_P.sizeInfo(bookList);
+				System.out.println("' 등록");
+				System.out.println(bookList.get(1));
+
 			
 			} else if(select == 2) {      //도서 검색
 				System.out.print("\n찾고자 하는 도서명 또는 저자명을 입력해주세요: ");
@@ -59,7 +75,7 @@ public class BookMain {
 				bM.bookSearch(bookList, search);
 				
 			} else if(select == 3) {         //도서 삭제
-				System.out.print("\n삭제하고자 하는 도서명 또는 저자명을 입력해주세요: ");
+				System.out.print("\n삭제하고자 하는 도서명을 입력해주세요: ");
 				String delete = sc.nextLine();
 				bM.bookDelete(bookList, delete);
 			
@@ -71,15 +87,15 @@ public class BookMain {
 				String purchase = sc.nextLine();
 			
 				bookPurchase bP = new bookPurchase();
-				System.out.print("\n구매할 책의 유형을 선택해주세요(종이책, 전자책(전자책 10% 할인): ");
+				System.out.print("\n구매할 책의 유형을 선택해주세요(종이책, 전자책): ");
 				String type = sc.nextLine();
 				
-				if(type.equals("종이책")) {
-					bP.bookClass = new PaperBookClass();
+				if(type.equals("전자책")) {
+					bP.bookClass = new EBookClass();
 					bP.pur(bookList, purchase);
 					
-				}else if(type.equals("전자책")) {
-					bP.bookClass = new EBookClass();
+				}else if(type.equals("종이책")) {
+					bP.bookClass = new PaperBookClass();
 					bP.pur(bookList, purchase);
 					
 				}
@@ -97,9 +113,8 @@ public class BookMain {
 	
 	
 	public void bookSearch(List<BookClass> bookList, String search) {   //2. 도서 검색-이름이나 작가로 검색
-		System.out.println("확인");
 		for(int i=0; i<bookList.size(); i++) {
-			if(bookList.get(i).getTitle().equals(search) || bookList.get(i).getAuthor().equals(search)) {
+			if((bookList.get(i).getTitle().equals(search) || bookList.get(i).getAuthor().equals(search)) && bookList.get(i) instanceof PaperBookClass) {
 				System.out.printf("책 제목: %s, 저자: %s, 출판사: %s, 가격: %d원\n", bookList.get(i).getTitle(), bookList.get(i).getAuthor(), bookList.get(i).getPublisher(), bookList.get(i).getPrice());
 			}
 		}
@@ -108,7 +123,15 @@ public class BookMain {
 	
 	public void bookDelete(List<BookClass> bookList, String delete) {   //3. 도서 삭제
 		for(int i=0; i<bookList.size(); i++) {
-			if(bookList.get(i).getTitle().equals(delete) || bookList.get(i).getAuthor().equals(delete)) {
+			if(bookList.size() == 0) {
+				System.out.println("삭제할 수 있는 책이 없습니다.");
+			}
+			
+			if(!bookList.get(i).getTitle().equals(delete)) {
+				System.out.println("이미 삭제되었거나 등록되지 않은 책입니다.");
+			}
+			
+			if(bookList.get(i).getTitle().equals(delete)) {
 				bookList.remove(i);
 				System.out.println("선택하신 책을 삭제하였습니다.");
 				i--;
@@ -122,7 +145,9 @@ public class BookMain {
 			System.out.println("등록된 책이 없습니다.");
 		}else{
 			for(int i=0; i<bookList.size(); i++) {
-			System.out.printf("%d. 책 이름: %s, 저자명: %s, 출판사:%s, 가격: %d원\n", i+1, bookList.get(i).getTitle(), bookList.get(i).getAuthor(), bookList.get(i).getPublisher(), bookList.get(i).getPrice());
+				if(bookList.get(i) instanceof PaperBookClass) {
+					System.out.printf("책 이름: %s, 저자명: %s, 출판사:%s, 가격: %d원\n", bookList.get(i).getTitle(), bookList.get(i).getAuthor(), bookList.get(i).getPublisher(), bookList.get(i).getPrice());
+				}
 			}
 		}
 	}

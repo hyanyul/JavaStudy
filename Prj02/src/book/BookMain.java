@@ -124,26 +124,21 @@ public class BookMain {
 	public void bookSearch(List<BookClass> bookList, String search) {   //2. 도서 검색-이름이나 작가로 검색
 		for(int i=0; i<bookList.size(); i++) {
 			if((bookList.get(i).getTitle().equals(search) || bookList.get(i).getAuthor().equals(search)) && bookList.get(i) instanceof PaperBookClass) {
-				System.out.printf("책 제목: %s, 저자: %s, 출판사: %s, 가격: %d원\n", bookList.get(i).getTitle(), bookList.get(i).getAuthor(), bookList.get(i).getPublisher(), bookList.get(i).getPrice());
+				System.out.printf("책 제목: %s, 저자: %s, 출판사: %s, 가격: %d원\n", bookList.get(i).getTitle(), bookList.get(i).getAuthor(), bookList.get(i).getPublisher(), (int)(bookList.get(i).getPrice()*1.1f));
 			}
 		}
 	}
 	
 	
 	public void bookDelete(List<BookClass> bookList, String delete) {   //3. 도서 삭제
-		if(bookList.size() == 0) {
-			System.out.println("등록된 책이 없어 삭제할 수 있는 책이 없습니다.");
-		}
-		
+	
 		for(int i=0; i<bookList.size(); i++) {
-			if(!bookList.get(i).getTitle().equals(delete)) {
-				System.out.println("이미 삭제되었거나 등록되지 않은 책입니다.");
-			}
-			
 			if(bookList.get(i).getTitle().equals(delete)) {
 				bookList.remove(i);
 				System.out.println("선택하신 책을 삭제하였습니다.");
 				i--;
+			}else {
+				System.out.println("이미 삭제되었거나 등록되지 않은 책입니다.");
 			}
 		}
 	}

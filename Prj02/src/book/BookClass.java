@@ -7,7 +7,7 @@ public class BookClass {
 	private String author;
 	private String publisher;
 	private int price;
-	private float tax = 1.1f;
+	private final float tax = 1.1f;
 	
 	
 	BookClass(){
@@ -70,7 +70,7 @@ public class BookClass {
 	
 	public void bookPurchase(List<BookClass> bookList, String purchase) {
 		for(int i=0; i<bookList.size(); i++) {
-			System.out.printf("책 이름: %s, 저자명: %s, 출판사:%s, 가격: %d원, ", bookList.get(i).title, bookList.get(i).author, bookList.get(i).publisher, bookList.get(i).price);
+			System.out.printf("책 이름: %s, 저자명: %s, 출판사:%s, 가격: %d원, ", bookList.get(i).title, bookList.get(i).author, bookList.get(i).publisher, (int)(bookList.get(i).price*tax));
 		}
 	}
 	

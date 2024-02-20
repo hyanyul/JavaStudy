@@ -33,8 +33,11 @@ public class PaperBookClass extends BookClass {
 	public void bookPurchase(List<BookClass> bookList, String purchase) {
 		for(int i=0; i<bookList.size(); i++) {
 			if((bookList.get(i).getTitle().equals(purchase) || bookList.get(i).getAuthor().equals(purchase)) && bookList.get(i) instanceof PaperBookClass) {
-				sizeInfo(bookList);
-				System.out.printf("'을 구매하였습니다.\n");
+				super.bookInfo(bookList);
+				System.out.print("총 페이지 수: ");
+				PaperBookClass e = (PaperBookClass)bookList.get(i);
+				System.out.print(e.getSize());
+				System.out.printf("p'을 구매하였습니다.\n");
 			}
 		}
 	}

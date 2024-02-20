@@ -13,6 +13,8 @@ public class BookMain {
 
 		BookMain bM = new BookMain();
 		
+		int select = 0;
+		
 		System.out.println("도서 관리 프로그램을 시작합니다.\n");
 		
 		try {
@@ -36,8 +38,14 @@ public class BookMain {
 			
 			System.out.print("메뉴를 선택해주세요: ");
 			
-			int select = sc.nextInt();
-			sc.nextLine();
+			try {
+				select = sc.nextInt();
+				sc.nextLine();
+			}catch(InputMismatchException e){
+				System.out.println("0~5번 중에서 골라주세요.");
+				sc.nextLine();
+				continue;
+			}
 			
 			if(select == 1) {         //도서 등록
 				System.out.print("\n책 제목을 입력하세요: ");
@@ -66,7 +74,6 @@ public class BookMain {
 				System.out.println("' 등록");
 				bC_P.sizeInfo(bookList);
 				System.out.println("' 등록");
-				System.out.println(bookList.get(1));
 
 			
 			} else if(select == 2) {      //도서 검색

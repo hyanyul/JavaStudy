@@ -13,7 +13,6 @@ public class BookMain {
 
 		BookMain bM = new BookMain();
 		
-		int select = 0;
 		
 		System.out.println("도서 관리 프로그램을 시작합니다.\n");
 		
@@ -22,6 +21,9 @@ public class BookMain {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		
+		int select = 0;
 		
 		while(true) {
 			
@@ -33,7 +35,7 @@ public class BookMain {
 					4. 도서 확인
 					5. 도서 구입
 					0. 종료\n
-					""");
+						""");
 			
 			
 			System.out.print("메뉴를 선택해주세요: ");
@@ -129,11 +131,11 @@ public class BookMain {
 	
 	
 	public void bookDelete(List<BookClass> bookList, String delete) {   //3. 도서 삭제
+		if(bookList.size() == 0) {
+			System.out.println("등록된 책이 없어 삭제할 수 있는 책이 없습니다.");
+		}
+		
 		for(int i=0; i<bookList.size(); i++) {
-			if(bookList.size() == 0) {
-				System.out.println("삭제할 수 있는 책이 없습니다.");
-			}
-			
 			if(!bookList.get(i).getTitle().equals(delete)) {
 				System.out.println("이미 삭제되었거나 등록되지 않은 책입니다.");
 			}

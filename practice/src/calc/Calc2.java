@@ -23,36 +23,36 @@ public class Calc2 {
 			
 			System.out.print("숫자 b를 입력하세요: ");	
 			int b = 0;
-				try{
-					b = sc.nextInt();
-				}catch(InputMismatchException e) {
-					System.out.println("정수를 입력해주세요.");
-					sc.nextLine();
-				}
-			
+			try{
+				b = sc.nextInt();
+			}catch(InputMismatchException e) {
+				System.out.println("정수를 입력해주세요.");
 				sc.nextLine();
-			
-				System.out.print("사용할 연산자를 입력해주세요: ");	
-				String w = sc.nextLine();	
+			}
 		
-				if(w.equals("+")) {
-					plus(a, b);		
-				}else if(w.equals("-")) {	
-					minus(a, b);	
-				}else if(w.equals("*")) {
-					multi(a, b);	
-				}else if(w.equals("/")) {	
-					divide(a, b);	
-				}else {
-					System.out.println("잘못 입력하셨습니다.");
-				}
+			sc.nextLine();
+			
+			System.out.print("사용할 연산자를 입력해주세요: ");	
+			String w = sc.nextLine();	
+		
+			if(w.equals("+")) {
+				plus(a, b);		
+			}else if(w.equals("-")) {	
+				minus(a, b);	
+			}else if(w.equals("*")) {
+				multi(a, b);	
+			}else if(w.equals("/")) {	
+				divide(a, b);	
+			}else {
+				System.out.println("잘못 입력하셨습니다.");
+			}
 				
-				System.out.print("\n프로그램을 종료하고 싶으시다면 \"q\", 아니면 아무 키를 눌러주세요.");	//종료 관련 안내 멘트 출력
-				String end = sc.nextLine();		//종료 관련 변수 입력
-				if(end.equals("q")) {	//end(입력한 값)가 q인지 조건문 통해 확인하고 true일 경우 {} 안 내용 실행
-					System.out.println("\n계산기 프로그램을 종료합니다.");
-					break;	//end가 q일 경우 while문 밖으로 빠져나가서 프로그램 종료됨
-				}
+			System.out.print("\n프로그램을 종료하고 싶으시다면 \"q\", 아니면 아무 키를 눌러주세요.");	//종료 관련 안내 멘트 출력
+			String end = sc.nextLine();		//종료 관련 변수 입력
+			if(end.equals("q")) {	//end(입력한 값)가 q인지 조건문 통해 확인하고 true일 경우 {} 안 내용 실행
+				System.out.println("\n계산기 프로그램을 종료합니다.");
+				break;	//end가 q일 경우 while문 밖으로 빠져나가서 프로그램 종료됨
+			}
 		}
 	
 	}	

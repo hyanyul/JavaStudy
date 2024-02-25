@@ -21,7 +21,7 @@ public class Customer {
 	
 	int i = 0;	//카트 인덱스 선언 및 초기화 역할
 	public void addToCart(Product choice, int quantity){	//상품과 개수 입력 시 cart에 담기는 메소드 정의
-		if(choice.quantity > quantity) {	//선택 수량이 재고보다 적을 경우에만 cart에 넣을 수 있도록 if 조건문 사용
+		if(choice.quantity >= quantity) {	//선택 수량이 재고보다 적을 경우에만 cart에 넣을 수 있도록 if 조건문 사용
 			choice.quantity -= quantity;	//선택한 상품의 재고에서 선택 수량만큼 빼줌(재고 변경)
 			cart[i] = new Product(choice.num, choice.name, choice.price, quantity);	//cart[i]에 재고 바뀐 새로운 Product 객체 생성해서 넣어줌
 			i++;	//다음에 장바구니에 담을 때 다음 인덱스로 넘어갈 수 있도록 i에 1 더해줌

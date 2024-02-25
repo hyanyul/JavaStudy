@@ -8,12 +8,14 @@ public class Product {
 	int price;	//상품 가격 필드
 	int quantity;	//상품 수량 필드
 	
-	Product(int num, String name, int price, int quantity){
-		this.num = num;
+	Product(int num, String name, int price, int quantity){		//상품 등록용 생성자
+		this.num = num;		//생성자 통해 필드 초기화
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
-		
-		System.out.printf("[상품 등록] '상품 번호: %d, 상품명: %s, 가격: %d, 수량: %d'가 등록되었습니다.\n", num, name, price, quantity);
+	}
+	
+	public void productInfo() {		//상품 등록 시 확인 문구 출력용 메소드
+		System.out.printf("[상품 등록] '상품 번호: %d, 상품명: %s, 가격: %d원, 수량: %d개'가 등록되었습니다.\n", num, name, price, quantity);
 	}
 }

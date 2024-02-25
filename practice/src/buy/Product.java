@@ -14,6 +14,6 @@ public class Product {
 		this.price = price;
 		this.quantity = quantity;
 		
-		System.out.printf("'상품 번호: %d, 상품명: %s, 가격: %d, 수량: %d'가 등록되었습니다.", num, name, price, quantity);
+		System.out.printf("[상품 등록] '상품 번호: %d, 상품명: %s, 가격: %d, 수량: %d'가 등록되었습니다.\n", num, name, price, quantity);
 	}
 }

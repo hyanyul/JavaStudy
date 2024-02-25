@@ -14,6 +14,8 @@ public class Customer {
 		this.age = age;
 		this.cart = cart;
 		
-		System.out.printf("'회원 번호: %d, 이름: %s, 나이: %d'가 등록되었습니다.", id, name, age);
+		System.out.printf("[회원 등록] '회원 번호: %d, 이름: %s, 나이: %d'가 등록되었습니다.\n", id, name, age);
 	}
+	
+	
 }

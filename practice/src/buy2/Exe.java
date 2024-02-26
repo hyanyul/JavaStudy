@@ -7,7 +7,7 @@ public class Exe {
 	public static void main(String[] args) {
 		//1. 회원 등록
 		Customer c1 = new Customer(24022501, "한지우", 10, new ArrayList<>());		//ArrayList는 길이가 유동적이므로 방 개수 정해놓을 필요 없음
-		Customer c2 = new Customer(24022502, "웅이", 15, new ArrayList<>());	//웅이는 늘 밥을 해줬어..
+		Customer c2 = new Customer(24022502, "웅이", 15, new ArrayList<>());			//웅이는 늘 밥을 해줬어..
 		Customer c3 = new Customer(24022503, "피카츄", 27, new ArrayList<>());
 		
 		c1.customerInfo();
